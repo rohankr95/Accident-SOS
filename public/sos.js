@@ -16,12 +16,24 @@ const servicesList = document.getElementById('services-list');
 const AUTO_TRIGGER_SECONDS = 5;
 let countdownTimer = null;
 
-function renderCallButtons(contacts) {
-  if (!contacts || !contacts.length) return;
+// Fixed on every personal SOS page, regardless of what the person adds themselves.
+const DEFAULT_CONTACTS = [
+  { name: 'Ambulance', phone: '108' },
+  { name: 'Police', phone: '112' },
+];
+
+function callButtonHtml(c) {
+  return `<a class="btn btn-primary call-btn" href="tel:${c.phone}">📞 Call ${c.name || c.phone}</a>`;
+}
+
+function renderCallButtons(personalContacts) {
   callCard.style.display = 'block';
-  callButtonsEl.innerHTML = contacts
-    .map((c) => `<a class="btn btn-primary call-btn" href="tel:${c.phone}">📞 Call ${c.name || c.phone}</a>`)
-    .join('');
+  let html = DEFAULT_CONTACTS.map(callButtonHtml).join('');
+  if (personalContacts && personalContacts.length) {
+    html += `<p style="margin:14px 0 4px;color:var(--muted);font-size:12px;font-weight:600;">YOUR CONTACTS</p>`;
+    html += personalContacts.map(callButtonHtml).join('');
+  }
+  callButtonsEl.innerHTML = html;
 }
 
 async function loadProfile() {
@@ -36,6 +48,7 @@ async function loadProfile() {
     nameEl.textContent = 'Emergency Alert';
     metaEl.textContent = 'This QR code is not registered.';
     sosBtn.disabled = true;
+    renderCallButtons([]);
   }
 }
 loadProfile();
