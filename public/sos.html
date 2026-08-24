@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accident SOS - Emergency Alert</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">SOS</div>
+    <h1>Emergency Alert</h1>
+  </header>
+
+  <div class="card sos-hero">
+    <h2 id="profile-name">Loading...</h2>
+    <p id="profile-meta"></p>
+
+    <button class="sos-button" id="sos-btn">SEND SOS</button>
+    <p id="countdown-text" style="display:none;"></p>
+    <button class="btn btn-secondary" id="cancel-btn" style="display:none;">Cancel</button>
+
+    <p class="status-line" id="status"></p>
+  </div>
+
+  <div class="card" id="result-card" style="display:none;">
+    <h3>Help has been alerted</h3>
+    <p id="location-line"></p>
+    <ul class="result-list" id="contacts-list"></ul>
+    <h4>Nearest emergency services found</h4>
+    <ul class="result-list" id="services-list"></ul>
+  </div>
+
+  <div class="notice">
+    If you are able to, also call your local emergency number directly
+    (e.g. 112 / 100 / 108 / 911). Automated alerts can fail or be delayed.
+  </div>
+</div>
+
+<script src="/sos.js"></script>
+</body>
+</html>

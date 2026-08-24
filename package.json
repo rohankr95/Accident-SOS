@@ -1,0 +1,22 @@
+{
+  "name": "accident-sos",
+  "version": "1.0.0",
+  "description": "QR-code based instant accident alert system: scan a QR code to share GPS location, notify emergency contacts, and reach the nearest hospital and police station.",
+  "private": true,
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nanoid": "^3.3.7",
+    "qrcode": "^1.5.4",
+    "twilio": "^5.3.0"
+  }
+}

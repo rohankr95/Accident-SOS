@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Create your Accident SOS QR code</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">SOS</div>
+    <h1>Set up your SOS QR</h1>
+  </header>
+
+  <form class="card" id="profile-form">
+    <label for="name">Full name</label>
+    <input id="name" name="name" required placeholder="e.g. Priya Sharma" />
+
+    <label for="bloodGroup">Blood group (optional)</label>
+    <input id="bloodGroup" name="bloodGroup" placeholder="e.g. O+" />
+
+    <label for="medicalNotes">Medical notes (optional)</label>
+    <textarea id="medicalNotes" name="medicalNotes" placeholder="Allergies, conditions, medication..."></textarea>
+
+    <label>Emergency contacts (at least one)</label>
+    <div id="contacts"></div>
+    <button type="button" class="btn btn-secondary" id="add-contact">+ Add another contact</button>
+
+    <button type="submit" class="btn btn-primary" id="submit-btn">Generate my QR code</button>
+    <div class="status-line err" id="form-error"></div>
+  </form>
+
+  <div class="card qr-box" id="result-card" style="display:none;">
+    <h2>Your QR code is ready</h2>
+    <img id="qr-img" alt="Your SOS QR code" />
+    <p class="url" id="qr-url"></p>
+    <p>Print this and stick it on your helmet, bike, car dashboard, or bag —
+       somewhere a first responder or bystander will see it.</p>
+    <a class="btn btn-primary" id="download-link" download="accident-sos-qr.png">Download QR image</a>
+    <a class="small-link" id="test-link" target="_blank">Open my SOS page (to test)</a>
+  </div>
+
+  <a class="small-link" href="/">&larr; Back</a>
+</div>
+
+<script src="/register.js"></script>
+</body>
+</html>
