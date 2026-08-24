@@ -16,7 +16,19 @@
   <div class="card sos-hero">
     <h2 id="profile-name">Loading...</h2>
     <p id="profile-meta"></p>
+  </div>
 
+  <div class="card" id="call-card" style="display:none;">
+    <p style="margin-top:0;color:var(--muted);font-size:13px;">
+      Tap a name below to call that emergency contact directly from this phone.
+    </p>
+    <div id="call-buttons"></div>
+  </div>
+
+  <div class="card sos-hero">
+    <p style="color:var(--muted);font-size:13px;">
+      Can't reach them, or want to alert everyone at once with this location?
+    </p>
     <button class="sos-button" id="sos-btn">SEND SOS</button>
     <p id="countdown-text" style="display:none;"></p>
     <button class="btn btn-secondary" id="cancel-btn" style="display:none;">Cancel</button>

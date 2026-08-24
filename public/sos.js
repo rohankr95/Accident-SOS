@@ -2,6 +2,8 @@ const id = window.location.pathname.split('/').pop();
 
 const nameEl = document.getElementById('profile-name');
 const metaEl = document.getElementById('profile-meta');
+const callCard = document.getElementById('call-card');
+const callButtonsEl = document.getElementById('call-buttons');
 const sosBtn = document.getElementById('sos-btn');
 const cancelBtn = document.getElementById('cancel-btn');
 const countdownText = document.getElementById('countdown-text');
@@ -14,6 +16,14 @@ const servicesList = document.getElementById('services-list');
 const AUTO_TRIGGER_SECONDS = 5;
 let countdownTimer = null;
 
+function renderCallButtons(contacts) {
+  if (!contacts || !contacts.length) return;
+  callCard.style.display = 'block';
+  callButtonsEl.innerHTML = contacts
+    .map((c) => `<a class="btn btn-primary call-btn" href="tel:${c.phone}">📞 Call ${c.name || c.phone}</a>`)
+    .join('');
+}
+
 async function loadProfile() {
   try {
     const res = await fetch(`/api/profiles/${id}/public`);
@@ -21,6 +31,7 @@ async function loadProfile() {
     const profile = await res.json();
     nameEl.textContent = profile.name;
     metaEl.textContent = profile.bloodGroup ? `Blood group: ${profile.bloodGroup}` : 'Tap SEND SOS if this person needs help';
+    renderCallButtons(profile.emergencyContacts);
   } catch (err) {
     nameEl.textContent = 'Emergency Alert';
     metaEl.textContent = 'This QR code is not registered.';

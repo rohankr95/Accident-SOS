@@ -52,7 +52,8 @@ router.post('/', async (req, res) => {
   res.status(201).json({ profile, sosUrl, qrDataUrl });
 });
 
-// Public, minimal profile info needed to render the SOS screen (no full contact list).
+// Public profile info needed to render the SOS screen, including emergency
+// contacts (name + phone) so the page can offer one-tap calling.
 router.get('/:id/public', (req, res) => {
   const data = load();
   const profile = data.profiles[req.params.id];
@@ -62,7 +63,7 @@ router.get('/:id/public', (req, res) => {
     name: profile.name,
     bloodGroup: profile.bloodGroup,
     medicalNotes: profile.medicalNotes,
-    contactCount: profile.emergencyContacts.length,
+    emergencyContacts: profile.emergencyContacts,
   });
 });
 
