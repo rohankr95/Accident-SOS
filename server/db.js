@@ -5,11 +5,13 @@ const DB_FILE = path.join(__dirname, '..', 'data', 'db.json');
 
 function load() {
   if (!fs.existsSync(DB_FILE)) {
-    return { profiles: {}, incidents: {} };
+    return { profiles: {}, blackspots: {}, incidents: {} };
   }
   const raw = fs.readFileSync(DB_FILE, 'utf8').trim();
-  if (!raw) return { profiles: {}, incidents: {} };
-  return JSON.parse(raw);
+  if (!raw) return { profiles: {}, blackspots: {}, incidents: {} };
+  const data = JSON.parse(raw);
+  if (!data.blackspots) data.blackspots = {};
+  return data;
 }
 
 function save(data) {

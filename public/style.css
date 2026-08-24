@@ -115,6 +115,20 @@ textarea { resize: vertical; min-height: 60px; }
 .btn-secondary { background: #eee; color: var(--ink); }
 .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
+.btn.call-btn {
+  text-decoration: none;
+  background: var(--green);
+  margin-top: 10px;
+}
+.btn.call-btn:hover { background: #245c27; }
+
+.mode-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.mode-links .btn { margin-top: 0; text-decoration: none; }
+
 .small-link {
   display: block;
   text-align: center;

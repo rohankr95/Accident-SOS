@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Create a Blackspot SOS QR</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">SOS</div>
+    <h1>Create a Blackspot QR</h1>
+  </header>
+
+  <div class="card">
+    <p>For municipalities, highway authorities, or community groups: create a
+    QR code for a known accident-prone spot (a "blackspot"). It's
+    pre-loaded with the nearest police station, hospital, and ambulance
+    contact numbers for that exact location. Print it on a sign and
+    install it at the site so anyone at the scene can call for help or
+    trigger an alert in one tap.</p>
+  </div>
+
+  <form class="card" id="blackspot-form">
+    <label for="locationName">Location name</label>
+    <input id="locationName" name="locationName" required placeholder="e.g. NH48 Km 42 Sharp Curve, near Silk Board" />
+
+    <label for="description">Description / landmark (optional)</label>
+    <textarea id="description" name="description" placeholder="Helps responders confirm they're at the right spot"></textarea>
+
+    <label>Blackspot coordinates</label>
+    <div class="contact-row">
+      <input id="lat" type="text" placeholder="Latitude" required>
+      <input id="lng" type="text" placeholder="Longitude" required>
+    </div>
+    <button type="button" class="btn btn-secondary" id="use-location">Use my current location</button>
+
+    <hr style="margin:20px 0;border:none;border-top:1px solid var(--border);">
+
+    <label>Nearest police station</label>
+    <div class="contact-row">
+      <input id="police-name" placeholder="Station name">
+      <input id="police-phone" type="tel" placeholder="Phone e.g. +9180...">
+    </div>
+
+    <label>Nearest hospital</label>
+    <div class="contact-row">
+      <input id="hospital-name" placeholder="Hospital name">
+      <input id="hospital-phone" type="tel" placeholder="Phone e.g. +9180...">
+    </div>
+
+    <label>Ambulance</label>
+    <div class="contact-row">
+      <input id="ambulance-name" placeholder="Service name e.g. 108 Ambulance">
+      <input id="ambulance-phone" type="tel" placeholder="Phone e.g. 108">
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="submit-btn">Generate blackspot QR code</button>
+    <div class="status-line err" id="form-error"></div>
+  </form>
+
+  <div class="card qr-box" id="result-card" style="display:none;">
+    <h2>Blackspot QR is ready</h2>
+    <img id="qr-img" alt="Blackspot SOS QR code" />
+    <p class="url" id="qr-url"></p>
+    <p>Print this on a durable sign and install it at the blackspot, ideally
+       with "In case of accident, scan for emergency help" printed alongside it.</p>
+    <a class="btn btn-primary" id="download-link" download="blackspot-sos-qr.png">Download QR image</a>
+    <a class="small-link" id="test-link" target="_blank">Open the scan page (to test)</a>
+  </div>
+
+  <a class="small-link" href="/">&larr; Back</a>
+</div>
+
+<script src="/blackspot-new.js"></script>
+</body>
+</html>

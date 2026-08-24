@@ -4,6 +4,7 @@ const express = require('express');
 
 const profilesRouter = require('./routes/profiles');
 const sosRouter = require('./routes/sos');
+const blackspotsRouter = require('./routes/blackspots');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,13 +14,20 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use('/api/profiles', profilesRouter);
 app.use('/api/sos', sosRouter);
+app.use('/api/blackspots', blackspotsRouter);
 
-// Clean URLs for the two main screens.
+// Clean URLs for the main screens.
 app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'register.html'));
 });
 app.get('/sos/:id', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'sos.html'));
+});
+app.get('/blackspot/new', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'blackspot-new.html'));
+});
+app.get('/blackspot/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'blackspot.html'));
 });
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));

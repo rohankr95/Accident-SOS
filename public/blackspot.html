@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accident Blackspot - Emergency Help</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">SOS</div>
+    <h1>Emergency Help</h1>
+  </header>
+
+  <div class="card sos-hero">
+    <h2 id="location-name">Loading...</h2>
+    <p id="description"></p>
+  </div>
+
+  <div class="card">
+    <p style="margin-top:0;color:var(--muted);font-size:13px;">
+      Tap a number below to call immediately from this phone.
+    </p>
+    <div id="call-buttons"></div>
+  </div>
+
+  <div class="card sos-hero">
+    <p style="color:var(--muted);font-size:13px;">
+      Can't talk right now, or want to notify all three at once with this
+      location? Send an automatic alert:
+    </p>
+    <button class="sos-button" id="alert-btn">SEND<br>ALERT</button>
+    <p class="status-line" id="status"></p>
+  </div>
+
+  <div class="card" id="result-card" style="display:none;">
+    <h3>Alert sent</h3>
+    <p id="location-line"></p>
+    <ul class="result-list" id="notified-list"></ul>
+  </div>
+
+  <div class="notice">
+    If you can speak, calling directly (buttons above) is the fastest way
+    to get help. The automatic alert is a backup, not a guarantee of
+    delivery — stay on scene and assist if it's safe to do so.
+  </div>
+</div>
+
+<script src="/blackspot.js"></script>
+</body>
+</html>
